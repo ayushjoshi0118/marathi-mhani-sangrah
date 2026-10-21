@@ -111,15 +111,15 @@ export function matchesSearch(
   const rawQuery = query.trim();
   const normalizedQuery = normalizeMarathiText(rawQuery);
 
-  // 1. Direct serial number search (e.g., "12", "#12", "१२")
-  const numericQuery = rawQuery.replace(/[^0-9]/g, '');
-  if (numericQuery && parseInt(numericQuery, 10) === proverb.serialNumber) {
-    return true;
-  }
-  // Check Devanagari numerals
-  const marathiSerial = toMarathiNumerals(proverb.serialNumber);
-  if (rawQuery.includes(marathiSerial)) {
-    return true;
+  // 1. Direct serial number search (e.g., "12", "#12", "१२", "#१२")
+  const cleanedSerialStr = rawQuery.replace(/^#/, '').trim();
+  const arabicDigits = cleanedSerialStr.replace(/[०-९]/g, (d) =>
+    '०१२३४५६७८९'.indexOf(d).toString()
+  );
+  if (/^\d+$/.test(arabicDigits)) {
+    if (parseInt(arabicDigits, 10) === proverb.serialNumber) {
+      return true;
+    }
   }
 
   // 2. Exact or partial normalized Marathi proverb search

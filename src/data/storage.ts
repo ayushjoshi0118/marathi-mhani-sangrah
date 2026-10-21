@@ -85,9 +85,10 @@ export function getProverbByIdOrSlug(idOrSlug: string): Proverb | null {
 
   const decoded = decodeURIComponent(idOrSlug).trim();
 
-  // 1. Numeric serial check
-  const serialNum = parseInt(decoded, 10);
-  if (!isNaN(serialNum) && String(serialNum) === decoded) {
+  // 1. Numeric serial check (Arabic e.g. "12" or Devanagari numerals e.g. "१२")
+  const arabicStr = decoded.replace(/[०-९]/g, (d) => '०१२३४५६७८९'.indexOf(d).toString());
+  const serialNum = parseInt(arabicStr, 10);
+  if (!isNaN(serialNum) && String(serialNum) === arabicStr) {
     const bySerial = getProverbBySerial(serialNum);
     if (bySerial) return bySerial;
   }

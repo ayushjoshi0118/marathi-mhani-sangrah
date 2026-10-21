@@ -20,8 +20,16 @@ export default function ProverbAudioButton({
   const [isSupported, setIsSupported] = useState(true);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && !('speechSynthesis' in window)) {
-      setIsSupported(false);
+    if (typeof window !== 'undefined') {
+      if (!('speechSynthesis' in window)) {
+        setIsSupported(false);
+      } else {
+        // Pre-warm voices cache
+        window.speechSynthesis.getVoices();
+        window.speechSynthesis.onvoiceschanged = () => {
+          window.speechSynthesis.getVoices();
+        };
+      }
     }
   }, []);
 

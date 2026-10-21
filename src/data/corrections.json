@@ -1,0 +1,24 @@
+[
+  {
+    "id": "cor-1792597309689-keopxj",
+    "proverbId": "mhan-1",
+    "proverbText": "अति तिथे माती",
+    "issueType": "spelling",
+    "description": "लाइव्ह HTTP चाचणी दुरुस्ती नोंद",
+    "suggestedCorrection": "",
+    "reporterName": "परीक्षक",
+    "status": "pending",
+    "createdAt": "2026-10-21T15:41:49.689Z"
+  },
+  {
+    "id": "cor-1792597179825-z9je2w",
+    "proverbId": "mhan-1",
+    "proverbText": "अति तिथे माती",
+    "issueType": "spelling",
+    "description": "लाइव्ह HTTP चाचणी दुरुस्ती नोंद",
+    "suggestedCorrection": "",
+    "reporterName": "परीक्षक",
+    "status": "pending",
+    "createdAt": "2026-10-21T15:39:39.825Z"
+  }
+]

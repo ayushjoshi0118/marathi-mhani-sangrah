@@ -1,20 +1,14 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { ShieldAlert, Send, CheckCircle2, AlertCircle, ArrowLeft, HelpCircle } from 'lucide-react';
 
-function DurustiForm() {
-  const searchParams = useSearchParams();
-  const initialMhanId = searchParams.get('id') || searchParams.get('mhanId') || '';
-  const initialSerial = searchParams.get('serial') || '';
-  const initialProverb = searchParams.get('proverb') || searchParams.get('text') || '';
-
+export default function DurustiPage() {
   const [formData, setFormData] = useState({
-    proverbId: initialMhanId,
-    proverbText: initialProverb,
-    serialNumber: initialSerial,
+    proverbId: '',
+    proverbText: '',
+    serialNumber: '',
     issueType: 'spelling',
     description: '',
     suggestedCorrection: '',
@@ -25,17 +19,24 @@ function DurustiForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Auto-fill from search params if passed
+  // Read URL query params on client mount to prefill form
   useEffect(() => {
-    if (initialProverb) {
-      setFormData((prev) => ({
-        ...prev,
-        proverbId: initialMhanId,
-        proverbText: initialProverb,
-        serialNumber: initialSerial,
-      }));
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id') || params.get('mhanId') || '';
+      const serial = params.get('serial') || '';
+      const text = params.get('proverb') || params.get('text') || '';
+
+      if (text || id || serial) {
+        setFormData((prev) => ({
+          ...prev,
+          proverbId: id,
+          proverbText: text,
+          serialNumber: serial,
+        }));
+      }
     }
-  }, [initialMhanId, initialSerial, initialProverb]);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -100,17 +101,18 @@ function DurustiForm() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto">
-      {/* Back button */}
-      <div className="mb-6">
-        <Link
-          href="/mhani"
-          className="inline-flex items-center gap-2 text-sm text-ink-600 hover:text-saffron-600 font-medium transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          संग्रहाकडे परत जा
-        </Link>
-      </div>
+    <div className="min-h-screen bg-sand-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
+        {/* Back button */}
+        <div className="mb-6">
+          <Link
+            href="/mhani"
+            className="inline-flex items-center gap-2 text-sm text-ink-600 hover:text-saffron-600 font-medium transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            संग्रहाकडे परत जा
+          </Link>
+        </div>
 
       {/* Header */}
       <div className="text-center mb-8">
@@ -297,16 +299,7 @@ function DurustiForm() {
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-export default function DurustiPage() {
-  return (
-    <div className="min-h-screen bg-sand-50 py-12 px-4 sm:px-6 lg:px-8">
-      <Suspense fallback={<div className="max-w-3xl mx-auto py-12 text-center text-ink-500">लोड होत आहे...</div>}>
-        <DurustiForm />
-      </Suspense>
+      </div>
     </div>
   );
 }
