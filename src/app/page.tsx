@@ -133,6 +133,33 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
+        {/* Transparent Curation & Editorial Progress Tracker */}
+        <div className="max-w-5xl mx-auto px-4 mt-6">
+          <div className="bg-sand-100/90 dark:bg-ink-800/80 rounded-2xl p-5 border border-sand-300 dark:border-ink-700">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-saffron-600 dark:text-saffron-400" />
+                <span className="font-semibold text-sm text-ink-900 dark:text-sand-100">
+                  संपादकीय पडताळणी प्रगती (Curation Pipeline Progress)
+                </span>
+              </div>
+              <span className="text-xs text-ink-600 dark:text-sand-300 font-medium">
+                लक्षित संग्रह: १,००० म्हणी | प्रमाणित: {toMarathiNumerals(stats.published)} ({((stats.published / 1000) * 100).toFixed(1)}%) | उर्वरित अंतर: {toMarathiNumerals(1000 - stats.published)}
+              </span>
+            </div>
+            {/* Progress Bar */}
+            <div className="w-full bg-sand-200 dark:bg-ink-700 h-2.5 rounded-full overflow-hidden">
+              <div
+                className="bg-gradient-to-r from-saffron-600 to-amber-500 h-full rounded-full transition-all duration-500"
+                style={{ width: `${Math.min(100, Math.max(1, (stats.published / 1000) * 100))}%` }}
+              />
+            </div>
+            <p className="text-[11px] text-ink-500 dark:text-sand-400 mt-2">
+              पारंपरिक लोकसाहित्य, मोल्सवर्थ कोश (१८५७) व शालेय पाठ्यपुस्तकातून टप्प्याटप्प्याने प्रमाणित केलेल्या अस्सल म्हणीच येथे प्रसिद्ध केल्या जातात. कोणतीही कृत्रिम (synthetic) बनावट नोंद प्रकाशित केली जात नाही.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Featured Proverb of the Day & New Visitor Highlight */}

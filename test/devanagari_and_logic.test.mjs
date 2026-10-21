@@ -74,8 +74,10 @@ test('Proverbs JSON Integrity & Category Distribution', async (t) => {
     assert.strictEqual(categoriesInCollection.size, 16);
   });
 
-  await t.test('every proverb has valid editorial verification and timestamps', () => {
-    for (const p of proverbs) {
+  await t.test('every published proverb has valid editorial verification and timestamps', () => {
+    const published = proverbs.filter((p) => p.status === 'published');
+    assert.ok(published.length >= 165);
+    for (const p of published) {
       assert.ok(p.editorialReview.linguisticVerified, `Linguistic verification missing for #${p.serialNumber}`);
       assert.ok(p.editorialReview.sourceVerified, `Source verification missing for #${p.serialNumber}`);
       assert.ok(p.createdAt, `createdAt missing for #${p.serialNumber}`);

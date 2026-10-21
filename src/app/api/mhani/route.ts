@@ -1,9 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { searchProverbs, getPublishedProverbs, getCategoriesWithCounts } from '@/data/storage';
+import { searchProverbs, getPublishedProverbs, getCategoriesWithCounts, getCurationMetrics } from '@/data/storage';
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
+
+    // Curation progress and pipeline metrics
+    if (searchParams.get('curation') === 'true') {
+      const metrics = getCurationMetrics();
+      return NextResponse.json(metrics, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
+        },
+      });
+    }
 
     const query = searchParams.get('q') || searchParams.get('query') || '';
     const category = searchParams.get('category') || undefined;

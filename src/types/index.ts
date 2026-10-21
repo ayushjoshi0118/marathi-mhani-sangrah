@@ -1,4 +1,4 @@
-export type ContentStatus = 'draft' | 'pending_review' | 'verified' | 'published' | 'archived';
+export type ContentStatus = 'draft' | 'reviewed' | 'pending_review' | 'verified' | 'published' | 'archived';
 
 export interface EditorialReview {
   reviewedBy?: string;
@@ -98,5 +98,5 @@ export interface SearchFilters {
   sortOrder?: 'asc' | 'desc';
   page?: number;
   pageSize?: number;
-  status?: ContentStatus;
+  status?: ContentStatus | 'all';
 }

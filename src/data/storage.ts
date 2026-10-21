@@ -79,6 +79,25 @@ export function getProverbBySerial(serial: number): Proverb | null {
   return proverbsCache.find((p) => p.serialNumber === serial) || null;
 }
 
+export function getCurationMetrics() {
+  initStorage();
+  const published = proverbsCache.filter((p) => p.status === 'published').length;
+  const verified = proverbsCache.filter((p) => p.status === 'verified').length;
+  const reviewed = proverbsCache.filter((p) => p.status === 'reviewed').length;
+  const draft = proverbsCache.filter((p) => p.status === 'draft').length;
+  const target = 1000;
+  return {
+    totalAllocated: proverbsCache.length,
+    publishedCount: published,
+    verifiedCount: verified,
+    reviewedCount: reviewed,
+    draftCount: draft,
+    targetCount: target,
+    remainingGap: target - published,
+    completionPercentage: Number(((published / target) * 100).toFixed(1)),
+  };
+}
+
 export function getProverbByIdOrSlug(idOrSlug: string): Proverb | null {
   initStorage();
   if (!idOrSlug) return null;
@@ -124,7 +143,10 @@ export function searchProverbs(filters: SearchFilters): PaginatedResult<Proverb>
   } = filters;
 
   // Base status filter
-  let filtered = status ? proverbsCache.filter((p) => p.status === status) : [...proverbsCache];
+  let filtered =
+    status === 'all'
+      ? [...proverbsCache]
+      : proverbsCache.filter((p) => p.status === (status || 'published'));
 
   // Category filter
   if (category && category !== 'all') {

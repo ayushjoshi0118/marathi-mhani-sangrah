@@ -1,0 +1,64 @@
+{
+  "targetCollectionSize": 1000,
+  "totalRecords": 1000,
+  "publishedCount": 165,
+  "verifiedCount": 165,
+  "reviewedCount": 0,
+  "draftCount": 835,
+  "rejectedCount": 0,
+  "remainingGapToTarget": 835,
+  "automatedValidationSummary": {
+    "totalEvaluated": 1000,
+    "devanagariCheckPassed": 1000,
+    "duplicateCheckPassed": 1000,
+    "duplicatesDetectedAndFiltered": 0,
+    "devanagariFailures": 0
+  },
+  "batches": [
+    {
+      "batchId": "BATCH_1",
+      "title": "पायाभूत सांस्कृतिक म्हणी (Foundational Cultural Canon)",
+      "serialRange": "1–65",
+      "count": 65,
+      "status": "published",
+      "provenanceSources": [
+        "मोल्सवर्थ शब्दकोश १८५७",
+        "महाराष्ट्र शब्दकोश",
+        "शालेय व्याकरण परंपरा"
+      ]
+    },
+    {
+      "batchId": "BATCH_2",
+      "title": "लोकव्यवहार व नीतिकल्पना (Practical Folklore & Everyday Wisdom)",
+      "serialRange": "66–115",
+      "count": 50,
+      "status": "published",
+      "provenanceSources": [
+        "पारंपरिक मौखिक संस्कृती",
+        "बालभारती अभ्यासक्रम",
+        "मोल्सवर्थ १८५७"
+      ]
+    },
+    {
+      "batchId": "BATCH_3",
+      "title": "मानवी स्वभाव व लोकसंस्कृती (Human Nature & Cultural Heritage)",
+      "serialRange": "116–165",
+      "count": 50,
+      "status": "published",
+      "provenanceSources": [
+        "पारंपरिक लोककथा",
+        "मोल्सवर्थ शब्दकोश १८५७",
+        "संत ज्ञानेश्वर व तुकाराम वाङ्मय"
+      ]
+    },
+    {
+      "batchId": "BATCH_PENDING_CURATION",
+      "title": "संपादकीय पडताळणी प्रक्रियेतील आगामी म्हणी (Pending Archival Curation)",
+      "serialRange": "166–1000",
+      "count": 835,
+      "status": "draft",
+      "notes": "अस्सल संदर्भ पडताळणी होईपर्यंत मसुदा (draft) स्थितीत ठेवण्यात आले आहे. कोणतीही बनावट माहिती प्रसिद्ध केलेली नाही."
+    }
+  ],
+  "timestamp": "2026-10-21T16:04:31.461Z"
+}
