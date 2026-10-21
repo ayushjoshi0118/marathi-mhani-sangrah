@@ -40,3 +40,6 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Local Backup Dumps
+backups/

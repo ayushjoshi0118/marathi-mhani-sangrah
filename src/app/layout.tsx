@@ -1,10 +1,21 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://marathi-mhani-sangrah.org';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FAF6EF' },
+    { media: '(prefers-color-scheme: dark)', color: '#0E121E' },
+  ],
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://marathimhani.org'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'मराठी म्हणी संग्रह — १,००० अस्सल म्हणींचा डिजिटल खजिना | Marathi Mhani Sangrah',
     template: '%s | मराठी म्हणी संग्रह',
@@ -28,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'mr_IN',
-    url: 'https://marathimhani.org',
+    url: siteUrl,
     siteName: 'मराठी म्हणी संग्रह (Marathi Mhani Sangrah)',
     title: 'मराठी म्हणी संग्रह — १,००० अस्सल मराठी म्हणी, अर्थ व उदाहरणे',
     description:
