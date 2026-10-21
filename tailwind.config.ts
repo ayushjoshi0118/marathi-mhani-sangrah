@@ -1,0 +1,103 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        ivory: {
+          50: "#FDFAF6",
+          100: "#FAF6EF",
+          200: "#F4EDE0",
+          300: "#EADFCB",
+          400: "#DC runB3",
+          500: "#C8B699",
+          600: "#A89474",
+          700: "#857356",
+          800: "#63543D",
+          900: "#443929",
+        },
+        ink: {
+          50: "#F3F5FA",
+          100: "#E6E9F2",
+          200: "#CCD3E4",
+          300: "#A8B4D1",
+          400: "#7A8DB9",
+          500: "#556A9D",
+          600: "#40517D",
+          700: "#323F62",
+          800: "#242C45",
+          900: "#1A1F32",
+          950: "#111420",
+        },
+        saffron: {
+          50: "#FFF7ED",
+          100: "#FFEDD5",
+          200: "#FED7AA",
+          300: "#FDBA74",
+          400: "#FB923C",
+          500: "#D95D24",
+          600: "#C2410C",
+          700: "#9A3412",
+          800: "#7C2D12",
+          900: "#431407",
+        },
+        terracotta: {
+          50: "#FAF5F3",
+          100: "#F4E8E3",
+          200: "#E9D2C7",
+          300: "#D9B29F",
+          400: "#C3876D",
+          500: "#A85D40",
+          600: "#8E442B",
+          700: "#733320",
+          800: "#5A281A",
+          900: "#472115",
+        },
+        antiquegold: {
+          50: "#FCF9EE",
+          100: "#F8F1D6",
+          200: "#EFE0A8",
+          300: "#E3CA74",
+          400: "#D5B145",
+          500: "#B88E18",
+          600: "#9C7210",
+          700: "#79550D",
+          800: "#5F420F",
+          900: "#4E3611",
+        },
+      },
+      fontFamily: {
+        devanagari: [
+          "'Noto Sans Devanagari'",
+          "'Mukta'",
+          "'Yantramanav'",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "'Segoe UI'",
+          "sans-serif",
+        ],
+        heading: [
+          "'Rozha One'",
+          "'Tiro Devanagari Marathi'",
+          "'Noto Serif Devanagari'",
+          "Georgia",
+          "serif",
+        ],
+      },
+      boxShadow: {
+        manuscript: "0 4px 20px -2px rgba(27, 31, 59, 0.06), 0 2px 6px -1px rgba(27, 31, 59, 0.04)",
+        "manuscript-lg": "0 10px 30px -4px rgba(27, 31, 59, 0.08), 0 4px 10px -2px rgba(27, 31, 59, 0.05)",
+        goldglow: "0 0 20px -3px rgba(184, 142, 24, 0.15)",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
